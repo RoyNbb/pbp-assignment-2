@@ -1,9 +1,9 @@
 # TODO: Implement Routings Here
 from django.urls import path
-from katalog.views import index
+from katalog.views import show_catalog
 
 app_name = 'katalog'
 
 urlpatterns = [
-    path('', index, name='index'),
+    path('', show_catalog, name='show_catalog'),
 ]

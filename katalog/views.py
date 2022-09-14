@@ -3,7 +3,7 @@ from django.shortcuts import render
 # TODO: Create your views here.
 from katalog.models import CatalogItem
 
-def index(request):
+def show_catalog(request):
     catalogs = CatalogItem.objects.all()
     context = {
         'list_catalog': catalogs ,
