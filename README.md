@@ -1,4 +1,6 @@
-# Tugas 2 PBP Gasal 2022
+# Link Deployment HEROKU app
+https://pbp-assignment-2-roynbb.herokuapp.com/katalog/
+# Tugas Pertanyaan 2 PBP Gasal 2022
 ## 1. Bagan request client ke web aplikasi berbasis Django dan kaitannya urls.py, views.py, models.py, dan html
 ![Bagan](mvt-diagram.png)
 ## 2. Alasan membutuhkan Virtual Environment
