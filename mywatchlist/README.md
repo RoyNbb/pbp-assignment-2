@@ -11,7 +11,7 @@ Walaupun keduanya memiliki fungsi yang sama, mereka memiliki beberapa perbedaan 
 HTML (Hypertext Markup Language) adalah bahasa yang digunakan untuk tampilan halaman website atau bisa disebut "bahasa markup".HTML berfungsi untuk memungkinkan browser menampilkan teks, gambar, atau elemen lainnya.
 
 ## 2. Alasan perlunya data delivery dalam pengimplementasian sebuah platform
-Saat mengimplementasikan sebuah platform, akan ada waktunya saat kita butuh untuk mengirimkan data daru satu stack ke stack lainnya, data delivery memungkinkan kita untuk melakukan hal tersebut. Seperti yang telah dijawab pada pertanyaan pertama, ada beberapa contoh format yang dapat kita gunakan yaitu HTML, JSON, dan XML.
+Saat mengimplementasikan sebuah platform, akan ada waktunya saat kita butuh untuk mengirimkan data daru satu stack ke stack lainnya, data delivery memungkinkan kita untuk melakukan hal tersebut. Seperti yang telah dijawab pada pertanyaan pertama, ada beberapa contoh format yang dapat kita gunakan untuk hal ini, yaitu HTML, JSON, dan XML.
 
 ## 3. Cara saya mengimplementasikan tiap checklist yang ada
 ### 1. Membuat aplikasi mywatchlist 
