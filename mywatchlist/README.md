@@ -112,4 +112,6 @@ web: gunicorn project_django.wsgi --log-file -
 karena kita membuat aplikasi ini dalam git repo yang pernah dihubungkan kepada satu app heroku.
 
 # Bukti lolos postman testing
-![Bagan](bukti_postman.png)
+![html](bukti_postman_html.png)
+![json](bukti_postman_json.png)
+![xml](bukti_postman_xml.png)
