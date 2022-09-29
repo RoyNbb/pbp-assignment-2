@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+ {% block content %}
+
+  <h1>Hi {{user}}!</h1>
+
+  <h4>This is your to do list. Be sure to always update it!</h4>
+
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Update Status</th>
+      <th>Delete Task</th>
+    </tr>
+    {% comment %} Add the data below this line {% endcomment %}
+      <tr>
+        {% for task in tasks %}
+            <th>{{task.date}}</th>
+            <th>{{task.title}}</th>
+            <th>{{task.description}}</th>
+            {% if task.is_finished %}
+                <th>Done</th>
+            {% else %}
+                <th>Pending</th>
+            {% endif %}
+            <th><button><a href="{% url 'todolist:change_is_finished' task.id %}">Change</a></button></th>
+            <th><button><a href="{% url 'todolist:delete_task' task.id %}">Delete</a></button></th>
+      </tr>
+    {% endfor %}
+  </table>
+  <br>
+  <button><a href="{% url 'todolist:add_todo' %}">Add New Task</a></button>
+  <button><a href="{% url 'todolist:logout' %}">Logout</a></button>
+
+  <h5>Your last login was {{last_login}}</h5>
+ {% endblock content %}
