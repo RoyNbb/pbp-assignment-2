@@ -1,4 +1,9 @@
 # Link HEROKU app
+https://pbp-assignment-2-roynbb.herokuapp.com/todolist/
+
+Daftar akun dummy:
+1. ntgaming (Pass: nicetry1)
+2. kokbisa (Pass: bisacuy1)
 
 # Question and answer of this week assignment
 ## 1. Apa keguanaan {% csrf_token %} pada elemen <form>?
