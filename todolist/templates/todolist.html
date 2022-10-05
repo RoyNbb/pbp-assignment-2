@@ -5,6 +5,10 @@
     body{
       background-color: #222222;
     }
+    .cards:hover{
+    box-shadow: 5px 6px 6px 2px #111111;
+    transform: scale(1.1);
+    }
   </style>
  
   <h1 class="text-center" style="color:white">Hi {{user}}!</h1>
@@ -23,6 +27,7 @@
             <div class="container mt-6" >
             <div class="row d-flex justify-content-center">
             <div class="col-md-6">
+            <div class="cards">
             <div class="card px-6 py-6 text-center" style="background-color: #EEEEEE;">
 
             
@@ -40,6 +45,7 @@
                 <a href="{% url 'todolist:change_is_finished' task.id %}" class="btn btn-dark">update</a>            
                 <a href="{% url 'todolist:delete_task' task.id %}" class="btn btn-dark">delete</a>
               </div>
+            </div>
             </div>
             </div>
             </div>
