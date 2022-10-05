@@ -78,6 +78,6 @@ Dalam melakukan tugas 5 ini, saya memutuskan untuk menggunak bootstrap untuk mem
 
 Setelah itu, saya mulai mengelompokkan tags yang ada dengan menggunakan ```<div>``` sesuai dengan kebutuhan saya. Lalu saya menentukan class dari tags untuk menerapkan css menggunakan bootstrap. Selain itu, saya pun juga menerapkan inline dan internal css untuk melengkapi.
 
-Dalam menerapkan CSS, saya pun tak lupa untuk menerapkan cards untuk menampilkan tiap task dengan memodifikasi ```todolist.html```. Dalam bagian for loop tiap task, saya mengganti menambahkan baris pada list menjadi membuat sebuah card baru. Adapun tema dari tampilan laman saya yaitu monokrom minimalistik.
+Dalam menerapkan CSS, saya pun tak lupa untuk menerapkan cards untuk menampilkan tiap task dengan memodifikasi ```todolist.html```. Dalam bagian for loop tiap task, saya mengganti menambahkan baris pada list menjadi membuat sebuah card baru. Adapun tema dari tampilan laman saya yaitu monokrom minimalistik yang terinspirasi dari lugu tulus :).
 
 
