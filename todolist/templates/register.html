@@ -6,21 +6,35 @@
 
 {% block content %}  
 
-<div class = "login">
-    
-    <h1>Registration Form</h1>  
+<style>
+    body{
+      background-color: #222222;
+    }
+</style>
+
+<div class="container mt-5">
+<div class="row d-flex justify-content-center" >
+<div class="col-md-6">
+<div class="card px-5 py-5" style="background-color: #eeeeee" >
+          
+    <h1 class="text-center name">Registration Form</h1>  
 
         <form method="POST" >  
-            {% csrf_token %}  
-            <table>  
+            {% csrf_token %} 
+            <div class="d-flex justify-content-center" style="background-color: white"></div> 
+            <table class="table table-striped">  
                 {{ form.as_table }}  
                 <tr>  
                     <td></td>
-                    <td><input type="submit" name="submit" value="Sign Up"/></td>  
                 </tr>  
-            </table>  
+            </table>
+            <div class="d-flex justify-content-center py-2" >
+                <input class="btn btn-dark" type="submit" name="submit" value="Sign Up">
+            </div> 
+            </div>
+               
         </form>
-
+    <div class="text-center fs-6 ">
     {% if messages %}  
         <ul>   
             {% for message in messages %}  
@@ -28,6 +42,7 @@
                 {% endfor %}  
         </ul>   
     {% endif %}
+    </div>
 
 </div>  
 

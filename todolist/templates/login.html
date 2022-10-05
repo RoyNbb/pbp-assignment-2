@@ -6,40 +6,63 @@
 
 {% block content %}
 
-<div class = "login">
+<style>
+    body{
+      background-color: #eeeeee;
+    }
+</style>
 
-    <h1>Login</h1>
-
-    <form method="POST" action="">
+<div class="container mt-5">
+<div class="row d-flex justify-content-center" >
+<div class="col-md-6">
+<div class="card px-5 py-5" style="background-color: #222222" >
+   
+    <h1 class="text-center name" style="color:white">todolist</h1>
+    <h6 class="text-center" style="color:white">write it. do it. update it. forget it.</h1>
+    <div class="px-2 py-2">
+    <form method="POST" action="" class="p-3 mt-3">
         {% csrf_token %}
-        <table>
-            <tr>
-                <td>Username: </td>
-                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-            </tr>
-                    
-            <tr>
-                <td>Password: </td>
-                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-            </tr>
-
-            <tr>
-                <td></td>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
-            </tr>
-        </table>
+        <div class="d-flex justify-content-center">
+             <table class="">
+                <tr>
+                    <td style="color:white">Username: </td>
+                    <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
+                </tr>
+                        
+                <tr>
+                    <td style="color:white">Password: </td>
+                    <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="d-flex justify-content-center py-2" >
+            <input class="btn login_btn" type="submit" value="Login" style="background-color:#eeeeee">
+        </div>
     </form>
+    </div>
 
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}     
-        
-    Don't have an account? <a href="{% url 'todolist:register' %}">Sign Up</a>
+    
+    <div class="text-center fs-6 ">
+        {% if messages %}
+            <ul class="">
+                {% for message in messages %}
+                    <li class=""><small>{{ message }}</small></li>
+                {% endfor %}
+            </ul>
+        {% endif %}   
+        <h5> </h5>
+        <h5> </h5>
+        <h5> </h5>
 
+        <div class="">       
+            <p class="" style="color:white"><small>Don't have an account?</small></p>
+            <h7></h7>
+            <a href="{% url 'todolist:register' %}" class="" style="color:white"><small>Sign Up</small></a>
+        </div>
+    </div>
+</div>
+</div>
+</div>
 </div>
 
 {% endblock content %}
