@@ -15,52 +15,56 @@
 <div class="container mt-5">
 <div class="row d-flex justify-content-center" >
 <div class="col-md-6">
-<div class="card px-5 py-5" style="background-color: #222222" >
-   
-    <h1 class="text-center name" style="color:white">todolist</h1>
-    <h6 class="text-center" style="color:white">write it. do it. update it. forget it.</h1>
-    <div class="px-2 py-2">
-    <form method="POST" action="" class="p-3 mt-3">
-        {% csrf_token %}
-        <div class="d-flex justify-content-center">
-             <table class="">
-                <tr>
-                    <td style="color:white">Username: </td>
-                    <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-                </tr>
-                        
-                <tr>
-                    <td style="color:white">Password: </td>
-                    <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-                </tr>
-            </table>
-        </div>
-        <div class="d-flex justify-content-center py-2" >
-            <input class="btn login_btn" type="submit" value="Login" style="background-color:#eeeeee">
-        </div>
-    </form>
-    </div>
-
+    <div class="card px-5 py-5" style="background-color: #222222" >
     
-    <div class="text-center fs-6 ">
-        {% if messages %}
-            <ul class="">
-                {% for message in messages %}
-                    <li class=""><small>{{ message }}</small></li>
-                {% endfor %}
-            </ul>
-        {% endif %}   
-        <h5> </h5>
-        <h5> </h5>
-        <h5> </h5>
+        <h1 class="text-center name" style="color:white">todolist</h1>
+        <h6 class="text-center" style="color:white">write it. do it. update it. forget it.</h1>
 
-        <div class="">       
-            <p class="" style="color:white"><small>Don't have an account?</small></p>
-            <h7></h7>
-            <a href="{% url 'todolist:register' %}" class="" style="color:white"><small>Sign Up</small></a>
+        <div class="px-2 py-1">
+            <form method="POST" action="" class="p-3 mt-3">
+                {% csrf_token %}
+
+                <div class="d-flex justify-content-center">
+                    <table class="">
+                        <tr>
+                            <td style="color:white">Username: </td>
+                            <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
+                        </tr>
+                                
+                        <tr>
+                            <td style="color:white">Password: </td>
+                            <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="d-flex justify-content-center py-1" >
+                    <input class="btn login_btn" type="submit" value="Login" style="background-color:#eeeeee">
+                </div>
+
+                {% if messages %}
+                    <ul class="d-flex justify-content-center" style="color:white">
+                        {% for message in messages %}
+                            <li class=""><small>{{ message }}</small></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+            </form>
         </div>
+
+        <br>
+        
+        <div class="text-center fs-6 ">   
+            
+            <div class="py-1">       
+                <p class="" style="color:white"><small>Don't have an account?  <a href="{% url 'todolist:register' %}" class="" style="color:white"><small>Sign Up</small></a>
+                </small></p>
+            </div>
+        </div>
+
+
     </div>
-</div>
 </div>
 </div>
 </div>

@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  body{
+    background-color: #222222;
+  }
+  .cards:hover{
+    box-shadow: 5px 6px 6px 2px #111111;
+    transform: scale(1.1);
+  }
+</style>
+
+
+  
+
+<h1 class="text-center" style="color:white">Hi {{user}}!</h1>
+<h4 class="text-center" style="color:white">This is your to do list. Be sure to always update it!</h4>
+<br>
+<div class="d-flex justify-content-center">
+    <div class="px-2 py-2">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal" style="background-color: #EEEEEE; color: #222222" >
+            add task
+        </button>
+        <a href="{% url 'todolist:logout' %}" class="btn" style="background-color: #EEEEEE;">logout</a>
+    </div>
+</div>
+
+
+  
+<!-- Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Add To Do</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form id="addform">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="col-form-label">Title:</label>
+                        <input type="text" name="title" placeholder="Makan bakso" class="form-control" id="title">                
+                    </div>
+                    <div class="mb-3">
+                        <label class="col-form-label">Description: </label>
+                        <textarea class="form-control" id="description" name="description" placeholder="biar kenyang" ></textarea>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-dark" id="addtaskbtn" data-bs-dismiss="modal">add task</button>        
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+
+<div class="container">
+    <div id="containofcards">
+    </div>
+</div>
+
+<br>
+<br>
+<h7 class="d-flex justify-content-center" style="color:white">Your last login was {{last_login}}</h7>
+
+  
+
+{% comment %} Script untuk menampilkan data yang ada serta add todo{% endcomment %}
+<script>
+    $(document).ready(function(){
+        refreshToDo();
+    });
+
+    async function get_json(){
+        return fetch("{% url 'todolist:get_json' %}").then((res)=> res.json())
+    }
+
+    async function refreshToDo(){
+        document.getElementById("containofcards").innerHTML = ""
+        const todolist = await get_json()
+        let htmlString = ``
+        todolist.forEach((item)=>{
+            htmlString += `\n
+            <div class="containofcards mt-6" >
+            <div class="row d-flex justify-content-center">
+            <div class="col-md-6">
+            <div class="cards">
+            <div class="card px-6 py-6 text-center" style="background-color: #EEEEEE;">   
+                <h5 class="card-title">${item.fields.title}</h5>
+               
+                {% if task.is_finished %}
+                    <h6 class="card-subtitle mb-2">&#9989;</h6>
+                {% else %}
+                    <h6 class="card-subtitle mb-2">&#9203;</h6>
+                {% endif %}
+
+                <h6 class="card-subtitle mb-2 text-muted">${item.fields.date}</h6>
+                <p class="card-text">${item.fields.description}</p>
+        
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            <br>
+            `
+        })
+        document.getElementById("containofcards").innerHTML = htmlString
+
+    }
+
+    function addToDo() {
+        fetch("{% url 'todolist:add_todo_ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#addform'))
+        }).then(refreshToDo)
+        return false
+    }
+    document.getElementById("addtaskbtn").onclick = addToDo
+    refreshToDo()
+
+</script>
+    
+
+    
+
+{% endblock content %}

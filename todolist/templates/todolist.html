@@ -1,57 +1,61 @@
 {% extends 'base.html' %}
 
- {% block content %}
-  <style>
-    body{
-      background-color: #222222;
-    }
-    .cards:hover{
+{% block content %}
+<style>
+  body{
+    background-color: #222222;
+  }
+  .cards:hover{
     box-shadow: 5px 6px 6px 2px #111111;
     transform: scale(1.1);
-    }
-  </style>
- 
-  <h1 class="text-center" style="color:white">Hi {{user}}!</h1>
-  <h4 class="text-center" style="color:white">This is your to do list. Be sure to always update it!</h4>
-  <br>
-  <div class="d-flex justify-content-center">
+  }
+</style>
+
+<h1 class="text-center" style="color:white">Hi {{user}}!</h1>
+<h4 class="text-center" style="color:white">This is your to do list. Be sure to always update it!</h4>
+<br>
+<div class="d-flex justify-content-center">
     <div class="px-2 py-2">
-    <a href="{% url 'todolist:add_todo' %}" class="btn" style="background-color: #EEEEEE;">add task</a>
-    <a href="{% url 'todolist:logout' %}" class="btn" style="background-color: #EEEEEE;">logout</a>
+      <a href="{% url 'todolist:add_todo' %}" class="btn" style="background-color: #EEEEEE;">add task</a>
+      <a href="{% url 'todolist:logout' %}" class="btn" style="background-color: #EEEEEE;">logout</a>
     </div>
-  </div>
-  <br>
+</div>
 
-    {% comment %} Add the data below this line {% endcomment %}
-        {% for task in tasks %}
-            <div class="container mt-6" >
-            <div class="row d-flex justify-content-center">
-            <div class="col-md-6">
-            <div class="cards">
-            <div class="card px-6 py-6 text-center" style="background-color: #EEEEEE;">
+<br>
 
-            
-              <h5 class="card-title">{{task.title}}</h5>
+  {% comment %} Add the data below this line {% endcomment %}
+  {% for task in tasks %}
+    <div class="container mt-6" >
+    <div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+    <div class="cards">
+    <div class="card px-6 py-6 text-center" style="background-color: #EEEEEE;">   
+      
+      <h5 class="card-title">{{task.title}}</h5>
 
-              {% if task.is_finished %}
-                <h6 class="card-subtitle mb-2">&#9989;</h3>
-              {% else %}
-                <h6 class="card-subtitle mb-2">&#9203;</h3>
-              {% endif %}
+      {% if task.is_finished %}
+        <h6 class="card-subtitle mb-2">&#9989;</h3>
+      {% else %}
+        <h6 class="card-subtitle mb-2">&#9203;</h3>
+      {% endif %}
 
-              <h6 class="card-subtitle mb-2 text-muted">{{task.date}}</h6>
-              <p class="card-text">{{task.description}}</p>
-              <div class="px-2 py-2" >
-                <a href="{% url 'todolist:change_is_finished' task.id %}" class="btn btn-dark">update</a>            
-                <a href="{% url 'todolist:delete_task' task.id %}" class="btn btn-dark">delete</a>
-              </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-          <br>
-    {% endfor %}
-  <br>
-  <h7 class="d-flex justify-content-center" style="color:white">Your last login was {{last_login}}</h7>
- {% endblock content %}
+      <h6 class="card-subtitle mb-2 text-muted">{{task.date}}</h6>
+
+      <p class="card-text">{{task.description}}</p>
+
+      <div class="px-2 py-2" >
+        <a href="{% url 'todolist:change_is_finished' task.id %}" class="btn btn-dark">update</a>            
+        <a href="{% url 'todolist:delete_task' task.id %}" class="btn btn-dark">delete</a>
+      </div>
+      
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    
+    <br>
+  {% endfor %}
+<br>
+<h7 class="d-flex justify-content-center" style="color:white">Your last login was {{last_login}}</h7>
+{% endblock content %}

@@ -10,6 +10,9 @@ import datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.core import serializers
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.http import HttpResponse, HttpResponseNotFound
 
 from todolist.models import Task
 
@@ -83,3 +86,51 @@ def delete_task(request, id):
     task = Task.objects.get(user=request.user, id = id)
     task.delete()
     return redirect('todolist:show_todolist')
+
+
+@login_required(login_url='/todolist/login/')
+def show_todolist_ajax(request):
+    context = {
+        'last_login': request.COOKIES['last_login'],
+    }
+    return render(request, 'todolistajax.html', context)
+
+
+# return all user tas in JSON format
+def get_json(request):
+    tasks = Task.objects.all()
+    return HttpResponse(
+        serializers.serialize("json", tasks),
+        content_type='application/json'
+    )
+
+@login_required(login_url='/todolist/login/')
+def add_todo_ajax(request):
+    if request.method == 'POST':
+        user = request.user
+        title = request.POST.get("title")
+        desc = request.POST.get("description")
+        task = Task(user=user, title=title, description=desc)
+        
+        task.save()
+        
+        return HttpResponse(b"CREATED", status=201)
+    return HttpResponseNotFound()
+
+# @login_required(login_url='/todolist/login/')
+# def delete_task_ajax(request, id):
+#     if request.method == "DELETE":
+#         task = Task.objects.get(user=request.user)
+#         task.delete()
+#         return HttpResponse("Success Deleting Task")
+#    return HttpResponseNotFound()
+
+# @login_required(login_url='/todolist/login/')
+# def change_is_finished_ajax(request, id):
+#     if request.method == "POST":
+#         task = Task.objects.get(user=request.user, id = id)
+#         task.is_finished = not task.is_finished
+#         task.save()
+#         return HttpResponse("Success updating task")
+#     return HttpResponseNotFound()
+
