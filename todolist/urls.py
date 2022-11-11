@@ -5,7 +5,7 @@ from todolist.views import register
 from todolist.views import login_user 
 from todolist.views import logout_user
 from todolist.views import add_todo, change_is_finished, delete_task
-from todolist.views import get_json, add_todo_ajax, 
+from todolist.views import get_json, add_todo_ajax
 
 
 app_name = 'todolist'
