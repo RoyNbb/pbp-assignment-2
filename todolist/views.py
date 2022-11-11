@@ -89,7 +89,7 @@ def delete_task(request, id):
 
 
 @login_required(login_url='/todolist/login/')
-def show_todolist_ajax(request):
+def show_todolist(request):
     context = {
         'last_login': request.COOKIES['last_login'],
     }
