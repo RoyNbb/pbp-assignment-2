@@ -48,7 +48,7 @@ def login_user(request):
         if user is not None:
             if user is not None:
                 login(request, user) # melakukan login terlebih dahulu
-                response = HttpResponseRedirect("/") # membuat response
+                response = HttpResponseRedirect("/todolist") # membuat response
                 response.set_cookie('last_login', str(datetime.datetime.now())) # membuat cookie last_login dan menambahkannya ke dalam response
                 return response
         else:
